@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tab jQuery</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tab-group">
+            <div class="tab-content-wrap">
+                <div class="tab-content-custom" id="tab1content">
+                    <img src="img/blue.png" />
+                </div>
+                <div class="tab-content-custom" id="tab2content">
+                    <img src="img/red.png" />
+                </div>
+                <div class="tab-content-custom" id="tab3content">
+                    <img src="img/cream.png" />
+                </div>
+            </div>
+            <ul id="tabs">
+                <li><a id="tab1" class="blue"></a>Blue</a></li>
+                <li><a id="tab2" class="red"></a>Red</a></li>
+                <li><a id="tab3" class="cream"></a>Cream</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script>
+        $('#tabs li a:not(:first)').addClass('inactive');
+        $('.tab-content-custom').hide();
+        $('.tab-content-custom:first').show();
+
+        $('#tabs li a').click(function () {
+            var n = $(this).attr('id');
+            if ($(this).hasClass('inactive')) {
+                $('#tabs li a').addClass('inactive');
+                $(this).removeClass('inactive');
+
+                $('.tab-content-custom').hide();
+                $('#' + n + 'content').fadeIn('slow');
+            }
+        })
+    </script>
+
+</body>
+
+</html>
